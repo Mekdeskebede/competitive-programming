@@ -1,3 +1,4 @@
+from tabnanny import check
 from numpy import sort
 
 
@@ -72,32 +73,76 @@ from numpy import sort
 # print(rearrangeArray([3,2,1]))    
 
 
-def findOriginalArray(changed):
-        """
-        :type changed: List[int]
-        :rtype: List[int]
-        """
-        original =[]
-        for i in changed:
-            original.append(i)
-        for i in sort(changed):
-            for j in sort(changed):
-                
-                if changed.index(i) != changed.index(j) and j == 2*i:
-                    
-                    
-                    original.pop(original.index(j))
-                    # print(original.index(j))
-                    break
-                else:
-                    continue
-        print(changed)
-        print(original)
-        if len(original) == len(changed)/2:
-            
-            return original
-        else:
-            return []
 
-print(findOriginalArray([0,3,2,4,6,0]))
+
+
+
+# def findOriginalArray(changed):
+#         """
+#         :type changed: List[int]
+#         :rtype: List[int]
+#         """
+#         original =[]
+#         for i in changed:
+#             original.append(i)
+#         for i in sort(changed):
+#             for j in sort(changed):
+                
+#                 if changed.index(i) != changed.index(j) and j == 2*i:
+                    
+                    
+#                     original.pop(original.index(j))
+#                     # print(original.index(j))
+#                     break
+#                 else:
+#                     continue
+#         print(changed)
+#         print(original)
+#         if len(original) == len(changed)/2:
+            
+#             return original
+#         else:
+#             return []
+
+# print(findOriginalArray([0,3,2,4,6,0]))
+
+
+
+def domino_pilling(n, m,a):
+   
+    square = n * m
+    one_domino = a * a
+    check_n=-1
+    check_m= -1
+    count = 0
+    num_domino = square/one_domino
+    if square% one_domino == 0:
+        return square/ one_domino
+    else:
+        while check_n != 0:
+            if n == a:
+                check_n = 0
+            elif n- a >0:
+                n =n- a
+                count += 1
+            else:
+                count += 1
+                check_n = 0
+        while check_m != 0:
+            if m ==a:
+                check_m = 0
+            elif m- a >0:
+                m =m- a
+                count += 1
+            else:
+                count += 1
+                check_m =0
+
+        return count
+    
+
+
+
+
+
 
