@@ -1,4 +1,6 @@
+from audioop import reverse
 from collections import defaultdict
+import re
 from tabnanny import check
 from numpy import sort
 
@@ -108,55 +110,76 @@ from numpy import sort
 # print(findOriginalArray([0,3,2,4,6,0]))
 
 
-      
+def sorting(a):
+    # Write your code here
+    for i in range(len(a)):
+        for j in range(len(a)-1):
+            if a[j+1] < a[j]:
+                a[j+1],a[j] = a[j],a[j+1]
+                
+            else:
+                continue
+    return a
 
-def maxOperations(nums, k):
+def minSetSize(arr):
     """
-    :type nums: List[int]
-    :type k: int
+    :type arr: List[int]
     :rtype: int
     """
-    # nums = nums
-    operation = 0
-        
-    for i in range(len(nums)):
-        
-        for j in range(len(nums)):
-                if i != j:
-                    if nums[i] + nums[j]==k  and nums[i] != k and nums[j] != k:
-                        
-                        nums[i]=0
-                        nums[j]=0
-                        operation += 1
-                    
-    return operation
+    frequency = defaultdict(int)
+    n = len(arr)
+    check = len(arr)
+    count = 0
+
+    for i in arr:
+        frequency[i] +=1 
+    frequencies = list(frequency.values())
+    
+    while check > n/2:
+         
+        max_frq = max(frequencies)
+        frequencies.pop(frequencies.index(max_frq))
+
+        print(frequencies)
+        count += 1
+        check -= max_frq
+        print(count)
+        print(check)
+
+    return count
+
+print(minSetSize([9,77,63,22,92,9,14,54,8,38,18,19,38,68,58,19]))
 
 
-print(maxOperations([4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4] ,2))
 
-# def maxOperations(nums, k):
-#         """
-#         :type nums: List[int]
-#         :type k: int
-#         :rtype: int
-#         """
-#         count = 0
-#         pairs = defaultdict(int)
-#         print('1',pairs)
-#         for num in nums:
-#             print('2',pairs)
-#             print('4',pairs)
-#             if pairs[k-num]:
-                
-#                 print('th',pairs)
-#                 pairs[k-num] -= 1
-#                 count += 1
-                
-#             else:
-#                 pairs[num] += 1
-#         print('3',pairs)
-                
-#         return count
+# frequency = defaultdict(int)
+# n = len([3,3,3,3,5,5,5,2,2,7])
 
-# print(maxOperations([1,2,3,4],5))
+# for i in [3,3,3,3,5,5,5,2,2,7]:
+#     frequency[i] +=1 
+# frequencies = list(frequency.values())
+# print(frequencies)
+# count = 0
+# while count > n/2:
+#     # for i in frequency:
+#     # max_frq = max(frequency.values())
+#     # [keys for keys, value in frequency.items() if value == max_frq frequency[]]
+#     frequencies = list(frequency.values())
+#     max_frq = max(frequencies)
+#     frequencies.pop(frequencies.index(max_frq))
+
+#     count += max_frq
+# print(count)
+
+
+
+   
+
+
+
+
+
+
+      
+
 
