@@ -1,3 +1,4 @@
+from collections import defaultdict
 from tabnanny import check
 from numpy import sort
 
@@ -107,42 +108,55 @@ from numpy import sort
 # print(findOriginalArray([0,3,2,4,6,0]))
 
 
+      
 
-def domino_pilling(n, m,a):
-   
-    square = n * m
-    one_domino = a * a
-    check_n=-1
-    check_m= -1
-    count = 0
-    num_domino = square/one_domino
-    if square% one_domino == 0:
-        return square/ one_domino
-    else:
-        while check_n != 0:
-            if n == a:
-                check_n = 0
-            elif n- a >0:
-                n =n- a
-                count += 1
-            else:
-                count += 1
-                check_n = 0
-        while check_m != 0:
-            if m ==a:
-                check_m = 0
-            elif m- a >0:
-                m =m- a
-                count += 1
-            else:
-                count += 1
-                check_m =0
-
-        return count
-    
+def maxOperations(nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: int
+    """
+    # nums = nums
+    operation = 0
+        
+    for i in range(len(nums)):
+        
+        for j in range(len(nums)):
+                if i != j:
+                    if nums[i] + nums[j]==k  and nums[i] != k and nums[j] != k:
+                        
+                        nums[i]=0
+                        nums[j]=0
+                        operation += 1
+                    
+    return operation
 
 
+print(maxOperations([4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4] ,2))
 
+# def maxOperations(nums, k):
+#         """
+#         :type nums: List[int]
+#         :type k: int
+#         :rtype: int
+#         """
+#         count = 0
+#         pairs = defaultdict(int)
+#         print('1',pairs)
+#         for num in nums:
+#             print('2',pairs)
+#             print('4',pairs)
+#             if pairs[k-num]:
+                
+#                 print('th',pairs)
+#                 pairs[k-num] -= 1
+#                 count += 1
+                
+#             else:
+#                 pairs[num] += 1
+#         print('3',pairs)
+                
+#         return count
 
-
+# print(maxOperations([1,2,3,4],5))
 
