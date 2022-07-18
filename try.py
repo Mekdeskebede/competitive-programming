@@ -1,28 +1,14 @@
 from audioop import reverse
 from collections import defaultdict
+from inspect import stack
+from math import ceil
+from queue import LifoQueue
 import re
 from tabnanny import check
 from numpy import sort
 
 
-# def merge(intervals):
-#         """
-#         :type intervals: List[List[int]]
-#         :rtype: List[List[int]]
-#         """
 
-        # merged = []
-
-        # for i in range(0,len(intervals),2):
-
-        #     if intervals[i][1] > intervals[i+1][0]:
-        #         merged.append([intervals[i][0],intervals[i+1][1]])
-
-        #     else:
-        #         merged.append([intervals[i][0],intervals[i][1]])
-        #         merged.append([intervals[i+1][0],intervals[i+1][1]])
-                 
-        # return merged
 
 #         intervals = sorted(intervals)
         
@@ -121,65 +107,5 @@ def sorting(a):
                 continue
     return a
 
-def minSetSize(arr):
-    """
-    :type arr: List[int]
-    :rtype: int
-    """
-    frequency = defaultdict(int)
-    n = len(arr)
-    check = len(arr)
-    count = 0
 
-    for i in arr:
-        frequency[i] +=1 
-    frequencies = list(frequency.values())
-    
-    while check > n/2:
-         
-        max_frq = max(frequencies)
-        frequencies.pop(frequencies.index(max_frq))
-
-        print(frequencies)
-        count += 1
-        check -= max_frq
-        print(count)
-        print(check)
-
-    return count
-
-print(minSetSize([9,77,63,22,92,9,14,54,8,38,18,19,38,68,58,19]))
-
-
-
-# frequency = defaultdict(int)
-# n = len([3,3,3,3,5,5,5,2,2,7])
-
-# for i in [3,3,3,3,5,5,5,2,2,7]:
-#     frequency[i] +=1 
-# frequencies = list(frequency.values())
-# print(frequencies)
-# count = 0
-# while count > n/2:
-#     # for i in frequency:
-#     # max_frq = max(frequency.values())
-#     # [keys for keys, value in frequency.items() if value == max_frq frequency[]]
-#     frequencies = list(frequency.values())
-#     max_frq = max(frequencies)
-#     frequencies.pop(frequencies.index(max_frq))
-
-#     count += max_frq
-# print(count)
-
-
-
-   
-
-
-
-
-
-
-      
-
-
+print(ceil(7.3))
