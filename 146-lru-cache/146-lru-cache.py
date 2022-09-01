@@ -26,32 +26,7 @@ class LRUCache:
         else:
             self.lru[key] = value
             
-
-#     def __init__(self, capacity: int):
-#         self.cap = capacity
-#         self.cache = OrderedDict()
-
-#     def get(self, key: int) -> int:
-#         if key in self.cache:
-#             value = self.cache.pop(key)
-#             self.cache[key] = value
-#             return self.cache[key]
-#         return -1  
-
-#     def put(self, key: int, value: int) -> None:
-#         if key in self.cache:
-#             self.cache.pop(key)
-#             self.cache[key] = value
-#             return
-#         if len(self.cache) == self.cap:
-#             self.cache.popitem(last = False)
-#             self.cache[key] = value
-#         else:
-#             self.cache[key] = value
-            
         
-       
-            
 
 
 # Your LRUCache object will be instantiated and called as such:
