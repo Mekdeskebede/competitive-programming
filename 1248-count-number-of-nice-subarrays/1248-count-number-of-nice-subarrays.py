@@ -1,7 +1,10 @@
 class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
         for i in range(len(nums)):
-            nums[i] %= 2
+            if nums[i] %2 == 0:
+                nums[i] = 0
+            else:
+                nums[i] = 1
         d = defaultdict(int)
         d[0] = 1
         prefix = 0
