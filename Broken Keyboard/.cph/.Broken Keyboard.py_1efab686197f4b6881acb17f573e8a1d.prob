@@ -1,0 +1,1 @@
+{"name":"Local: Broken Keyboard","url":"d:\\s4\\competitive-programming\\Broken Keyboard\\Broken Keyboard.py","tests":[{"id":1664810562240,"input":"5\na\nzzaaz\nccff\ncbddbb\nzzaazaaz\n","output":"a\nz\n\nbc\nz\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\s4\\competitive-programming\\Broken Keyboard\\Broken Keyboard.py","group":"local","local":true}
