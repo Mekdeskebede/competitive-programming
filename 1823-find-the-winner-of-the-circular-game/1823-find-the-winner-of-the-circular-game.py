@@ -1,20 +1,18 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
         
-        queue = list(range(1,n+1))
+        lis = list(i for i in range(1,n+1))
+        n = len(lis)
+        idx = 0
         
-        while len(queue) != 1 and queue:
-            remove = k
-            while remove > 0:
-                temp = queue[0]
-                queue.pop(0)
-                queue.append(temp)
-                
-
-                remove -= 1
-            queue.pop()
+        while len(lis) > 1:
+            
+            n = len(lis)
+            idx = (idx + k-1) % n
+            lis.pop(idx)
+            
+        return lis[0]
             
             
             
-        return queue[0]
-            
+        
