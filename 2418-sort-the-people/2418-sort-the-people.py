@@ -4,11 +4,16 @@ class Solution:
         n = len(names)
         
         for i in range(n):
-            for j in range(i + 1):
-                if heights[i] > heights[j]:
-                    heights[i], heights[j] = heights[j], heights[i]
-                    names[i], names[j] = names[j], names[i]
-        return names
+            min_elt = heights[i]
+            idx = i
+            for j in range(i, n):
+                if min_elt < heights[j]:
+                    min_elt = heights[j]
+                    idx = j
                     
-        
+            heights[i], heights[idx] = heights[idx],heights[i]
+            names[i], names[idx] = names[idx],names[i]
+                    
+        return names
+                           
         
