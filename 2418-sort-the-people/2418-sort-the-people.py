@@ -1,15 +1,14 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
         
-        d = {}
-        for i in range(len(names)):
-            d[heights[i]] = names[i]
-        heights.sort(reverse = True)
+        n = len(names)
         
-        res = []
-        for i in heights:
-            res.append(d[i])
-            
-        return res
+        for i in range(n):
+            for j in range(i + 1):
+                if heights[i] > heights[j]:
+                    heights[i], heights[j] = heights[j], heights[i]
+                    names[i], names[j] = names[j], names[i]
+        return names
+                    
         
         
