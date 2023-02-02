@@ -1,9 +1,5 @@
-class Solution(object):
-    def smallerNumbersThanCurrent(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
         result = []
         for i in nums:
             count = 0
