@@ -1,0 +1,1 @@
+{"name":"Local: complex_bracket","url":"f:\\a2sv\\competitive-programming\\selectionSort\\complex_bracket.py","tests":[{"id":1675511949446,"input":")(","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\a2sv\\competitive-programming\\selectionSort\\complex_bracket.py","group":"local","local":true}
