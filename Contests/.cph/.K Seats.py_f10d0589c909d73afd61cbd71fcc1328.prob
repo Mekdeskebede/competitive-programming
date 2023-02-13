@@ -1,0 +1,1 @@
+{"name":"Local: K Seats","url":"f:\\a2sv\\competitive-programming\\Contests\\K Seats.py","tests":[{"id":1676116583264,"input":"5 3 4\n.*.\n*..\n.*.\n...\n...\n","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\a2sv\\competitive-programming\\Contests\\K Seats.py","group":"local","local":true}
