@@ -4,10 +4,10 @@ class Solution:
     result = []
     def select(self, arr,i):
         return min(arr[i:])
-        
+
         
         # code here 
-    
+
     def selectionSort(self, arr,n):
         for i in range(n):
             # print(self.select(arr,i))
