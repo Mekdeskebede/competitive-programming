@@ -7,14 +7,24 @@
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        hash_set = set()
+        slow = head
+        fast = head
         
-        while head:
+        intercept = None
+        
+        while fast and fast.next:
             
-            if head in hash_set:
-                return head
+            slow = slow.next
+            fast = fast.next.next
             
-            hash_set.add(head)
-            head = head.next
-            
-        return 
+            if slow == fast:
+                intercept = fast
+                slow = head
+
+                while slow:
+                    if slow == intercept:
+                        return slow
+                    slow = slow.next
+                    intercept = intercept.next
+                                            
+        return
