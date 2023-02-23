@@ -1,7 +1,12 @@
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
         
-        for i in range(len(nums)):
-            if i != 0:
-                nums[i] += nums[i-1]
-        return nums
+        prefix = []
+        
+        pre_sum = 0
+        for num in nums:
+            
+            pre_sum += num
+            prefix.append(pre_sum)
+            
+        return prefix
