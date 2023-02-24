@@ -1,41 +1,31 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
+        
         stack = []
-        for i in tokens:
-            if i == "+":
-                num1 = stack.pop()
-                num2 = stack.pop()
-                result = int(num1) + int(num2)
-                stack.append(result)
-               
-                continue
-            if i == "/":
-                num1 = stack.pop()
-                num2 = stack.pop()
+        
+        for token in tokens:
+            if token == "*":
+                mul1 = stack.pop()
+                mul2 = stack.pop()
+                stack.append(mul2*mul1)
                 
-                result = int(num2) // int(num1)
-                if int(num2)%int(num1)!=0 and result < 0:
-                    stack.append(result +1)
+            elif token == "+":
+                sum1 = stack.pop()
+                sum2 = stack.pop()
+                stack.append(sum2+sum1)
+                
+            elif token == "-":
+                sub1 = stack.pop()
+                sub2 = stack.pop()
+                stack.append(sub2-sub1)
+            
+            elif token == "/":
+                div1 = stack.pop()
+                div2 = stack.pop()
+                if  div2%div1 != 0 and div2//div1 < 0:
+                    stack.append(div2//div1+1)
                 else:
-                    stack.append(result)
-                   
-                continue
-            if i == "-":
-                num1 = stack.pop()
-                num2 = stack.pop()
-                result = int(num2) - int(num1)
-                stack.append(result)
-                
-                continue
-
-            if i == "*":
-                num1 = stack.pop()
-                num2 = stack.pop()
-                result = int(num2) * int(num1)
-                stack.append(result)
-                
-                continue
+                    stack.append(div2//div1)
             else:
-                stack.append(i)
-
-        return int(stack[0])
+                stack.append(int(token))
+        return stack[0]
