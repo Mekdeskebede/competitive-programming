@@ -1,35 +1,26 @@
 class MyQueue:
 
     def __init__(self):
-        self.stack = []
+        
+        self.queue = []
+        
+    def push(self, x: int) -> None:
 
-    def push(self, x):
-        """
-        :type x: int
-        :rtype: None
-        """
-        self.stack.append(x)
+        self.queue.append(x)
 
-    def pop(self):
-        """
-        :rtype: int
-        """
-        return self.stack.pop(0)
+    def pop(self) -> int:
+        
+        popped = self.queue[0]
+        self.queue = self.queue[1:]
+        return popped
 
-    def peek(self):
-        """
-        :rtype: int
-        """
-        return self.stack[0]
+    def peek(self) -> int:
+        
+        return self.queue[0]
 
-    def empty(self):
-        """
-        :rtype: bool
-        """
-        if len(self.stack) ==0:
-            return True
-        else: 
-            return False
+    def empty(self) -> bool:
+        
+        return not self.queue
         
 
 
