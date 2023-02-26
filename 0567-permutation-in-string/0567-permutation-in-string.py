@@ -1,19 +1,30 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        n = len(s1)
-        s1Count = Counter(s1)
-        s2Count = Counter(s2[:n])
         
-        if s1Count == s2Count:
+        n = len(s2)
+        k = len(s1)
+        
+        if k > n:
+            return False
+        
+        s1_count = Counter(s1)
+        s2_count = Counter(s2[:k])
+        
+        if s1_count == s2_count:
             return True
+        
         left = 0
-        for right in range(n,len(s2)):
-            s2Count[s2[left]] -= 1
-            s2Count[s2[right]] = 1 + s2Count.get(s2[right], 0)
-            if s2Count[s2[left]] == 0:
-                s2Count.pop(s2[left])
-            if s1Count == s2Count:
-                return True
+        for right in range(k,n):
+            
+            s2_count[s2[right]] += 1
+            
+            s2_count[s2[left]] -= 1
+            if s2_count[s2[left]] ==0:
+                del s2_count[s2[left]]
             left += 1
             
+            if s1_count == s2_count:
+                return True
+            
         return False
+        
