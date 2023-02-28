@@ -3,10 +3,17 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        left = 0
-        right = len(s) - 1
         
-        while left < right:
-            s[left], s[right] = s[right], s[left]
-            left += 1
-            right -= 1
+        def recur(string,left, right):
+            
+            if left > right:
+                return string
+            string[left], string[right] = string[right], string[left]
+            
+            return recur(string, left+1,right-1)
+        
+        recur(s,0,len(s)-1)
+            
+            
+            
+        
