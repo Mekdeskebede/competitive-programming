@@ -2,10 +2,6 @@ class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
         
         n = len(nums)
-        # left = 0
-        # right = 0
-        # ans = 0
-        # odds = 0
         for i in range(n):
             if nums[i]%2 != 0:
                 nums[i] = 1
@@ -23,7 +19,6 @@ class Solution:
                 ans += window[num-k]
             window[num] += 1
             
-        
         return ans
     
             
