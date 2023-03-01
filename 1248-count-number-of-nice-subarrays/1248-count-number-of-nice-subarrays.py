@@ -1,17 +1,35 @@
 class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
-        for i in range(len(nums)):
-            if nums[i] %2 == 0:
-                nums[i] = 0
-            else:
+        
+        n = len(nums)
+        # left = 0
+        # right = 0
+        # ans = 0
+        # odds = 0
+        for i in range(n):
+            if nums[i]%2 != 0:
                 nums[i] = 1
-        d = defaultdict(int)
-        d[0] = 1
-        prefix = 0
+            else:
+                nums[i] = 0
+                
+        for i in range(1,n):
+            nums[i] += nums[i-1]
+        
+        window = defaultdict(int,{0:1})
         ans = 0
-        for i in nums:
-            prefix += i
-            if(prefix - k in d):
-                ans += d[prefix-k]
-            d[prefix] += 1
+        
+        for num in nums:
+            if num-k in window:
+                ans += window[num-k]
+            window[num] += 1
+            
+        
         return ans
+    
+            
+            
+                
+                
+            
+            
+        
