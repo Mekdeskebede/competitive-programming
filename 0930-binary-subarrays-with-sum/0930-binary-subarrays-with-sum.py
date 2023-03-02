@@ -1,20 +1,17 @@
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         
-        preSum = []
-        add = 0
-        for i in range(len(nums)):
-            add += nums[i]
-            preSum.append(add)
-            
-        visited = defaultdict(int)
-        visited[0] = 1
-        res = 0
-        for i in range(len(nums)):
-            diff = preSum[i] - goal
-            if diff in visited:
-                res += visited[diff]
-            
-            visited[preSum[i]] += 1
+        n = len(nums)
+        sum_count = {0:1}
         
-        return res 
+        for i in range(1,n):
+            nums[i] += nums[i-1]
+     
+        ans = 0
+        for num in nums:
+            if num - goal in sum_count:
+                ans += sum_count[num - goal]
+            sum_count[num] = 1 + sum_count.get(num,0)
+
+        return ans
+                
