@@ -5,20 +5,20 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    
-    def dfs(self,node1 , node2):
-
-        if node1 == None and node2 == None:
-            return True
-
-        elif node1 == None or node2 == None:
-            return False
-
-        elif node1.val != node2.val:
-            return False
-
-        return self.dfs(node1.left , node2.left) and self.dfs(node1.right , node2.right)
-        
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return self.dfs(p , q)
-    
+        
+        def isSame(p,q):
+            if not q and p or not p and q:
+                return False
+            
+            if not q and not p:
+                return True
+            
+            if q.val != p.val:
+                return False
+            
+            return isSame(p.left,q.left) and isSame(p.right,q.right)
+            
+        return isSame(p,q)
+     
+        
