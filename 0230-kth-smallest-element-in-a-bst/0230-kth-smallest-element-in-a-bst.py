@@ -5,15 +5,19 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    ans  = 0
+    k = 0
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-
-        ans = []
-        def traverse(root):
+        self.k = k
+        def traverse(root,k):
             if root:
-                traverse(root.left)
-                ans.append(root.val)
-                traverse(root.right)
+                traverse(root.left,self.k)
+                self.k -= 1
+                if self.k == 0:
+                    self.ans = root.val
+                    return
+                traverse(root.right,self.k)
                 
-        traverse(root)
-        return ans[k-1]
+        traverse(root,self.k)  
+        return self.ans
  
