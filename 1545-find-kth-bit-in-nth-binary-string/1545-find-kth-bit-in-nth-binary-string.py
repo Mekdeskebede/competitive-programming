@@ -1,24 +1,22 @@
 class Solution:
+    def invertReverse(self,s):
+        s = list(s)
+        for i in range(len(s)):
+            if s[i] == "1":
+                s[i] = "0"
+            else:
+                s[i] = "1"
+        s = s[::-1]
+        return "".join(s)
+                
     def findKthBit(self, n: int, k: int) -> str:
         
-        binary = '0'
+        self.binary = "0"
+        def recur(n):
+            if  n < 1:
+                return 
+            self.binary += "1" + self.invertReverse(self.binary)
+            return recur(n-1)
         
-        while (n > 0):
-            
-            temp = binary
-            temp = temp[::-1]
-            list_temp = []
-            
-            for i in range(len(temp)):
-                
-                if temp[i] == "0":
-                    list_temp.append('1')
-                else:
-                    list_temp.append('0')
-                
-            binary = binary + '1' + ''.join(list_temp)
-            n -= 1
-            
-       
-        return binary[k-1]
-    
+        recur(n)
+        return self.binary[k-1]
