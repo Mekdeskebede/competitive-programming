@@ -6,27 +6,25 @@
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
         
-        sum = 0
-        fast = slow = head
-       
+        slow = head
+        fast = head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-             
+            
+        rev = slow
         prev = None
-        while slow:
-            temp = slow.next
-            slow.next = prev
-            prev = slow
-            slow = temp
+        while rev:
+            temp = rev.next
+            rev.next = prev
+            prev = rev
+            rev = temp
             
+        max_twin = 0
         while prev:
-            if head.val + prev.val > sum:
-                sum = head.val + prev.val
-            
-                
-            head = head.next
+            max_twin = max(max_twin, prev.val+head.val)
             prev = prev.next
-
-        return sum
+            head = head.next
         
+        return max_twin
+            
