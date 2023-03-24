@@ -1,16 +1,16 @@
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
-        li = []
-        dup = None
-        for i in nums:
-            if i in li:
-                dup = i
-                break
-            li.append(i)
-        mis = None
+        ans = []
         for i in range(len(nums)):
-            if i+1 not in nums:
-                mis = i+1
-                break
-        return [dup,mis]
+            while i + 1 != nums[i]:
+                temp = nums[i]-1
+                if nums[i] == nums[temp]:
+                    break
+                nums[i], nums[temp] = nums[temp], nums[i]
                 
+        for i in range(len(nums)):
+            if nums[i] != i + 1:
+                ans.append(nums[i])
+                ans.append(i+1)
+                
+        return ans
