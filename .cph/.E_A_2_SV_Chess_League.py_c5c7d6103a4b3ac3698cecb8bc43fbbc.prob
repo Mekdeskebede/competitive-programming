@@ -1,0 +1,1 @@
+{"name":"Local: E_A_2_SV_Chess_League","url":"d:\\a2sv\\competitive-programming\\E_A_2_SV_Chess_League.py","tests":[{"id":1680292203710,"input":"2 400\n1000 200 400 600","output":"1 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\a2sv\\competitive-programming\\E_A_2_SV_Chess_League.py","group":"local","local":true}
