@@ -10,15 +10,15 @@ class Solution:
         n = len(nums) 
         res = 0
         for i in range(n):
-            minVal = nums[i]
+            prev = nums[i]
             for j in range(i,n):
                 if i == j and nums[i] == k:
                     res += 1
                 else:
-                    minVal = GCD(minVal,nums[j])
-                    if minVal < k:
+                    prev = GCD(prev,nums[j])
+                    if prev < k:
                         break
-                    elif minVal == k:
+                    elif prev == k:
                         res += 1
                         
         return res
