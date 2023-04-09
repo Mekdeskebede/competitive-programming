@@ -1,0 +1,1 @@
+{"name":"Local: Cities and roads","url":"d:\\a2sv\\competitive-programming\\Cities and roads.py","tests":[{"id":1681016972967,"input":"5\n0 1 0 0 0 \n1 0 1 1 0 \n0 1 0 0 0 \n0 1 0 0 0 \n0 0 0 0 0","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\a2sv\\competitive-programming\\Cities and roads.py","group":"local","local":true}
