@@ -1,13 +1,20 @@
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        result = []
-        stack = [(0, [0])]
-        target = len(graph) - 1
-        while stack:
-            cur,route = stack.pop()
-            if cur == target:
-                result.append(route)
-            else:
-                for node in graph[cur]:
-                    stack.append((node, route + [node]))
-        return result
+        
+        adj_list = defaultdict(list)
+                
+        final_paths = []
+        
+        def dfs(idx,path):
+            path.append(idx)
+            if idx == len(graph) -1:
+                final_paths.append(path[:])
+                
+            for adj in graph[idx]:
+                dfs(adj,path)
+                path.pop()
+                
+        dfs(0,[])
+        return final_paths
+       
+        
