@@ -1,18 +1,17 @@
 # Definition for a binary tree node.
 # class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
+#     def init(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
 class Solution:
     def evaluateTree(self, root: Optional[TreeNode]) -> bool:
+        if not root.left:
+            return root.val
         
-        def dfs(node):
-
-            if not node.right and not node.left:
-                return True if node.val == 1 else False
-            if node.val == 2:
-                return dfs(node.left) or dfs(node.right)
-            return dfs(node.left) and dfs(node.right)
+        left = self.evaluateTree(root.left)
+        right= self.evaluateTree(root.right)
         
-        return dfs(root)
+        if root.val == 2:
+            return left or right
+        return left and right
