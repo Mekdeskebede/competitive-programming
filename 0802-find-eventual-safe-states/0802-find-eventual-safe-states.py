@@ -10,6 +10,7 @@ class Solution:
             incoming.append(len(graph[i]))
             if incoming[i] == 0:
                 queue.append(i)
+                ans.append(i)
             for outgoing in graph[i]:
                 adj_list[outgoing].append(i)
                 
@@ -21,9 +22,6 @@ class Solution:
                     queue.append(neighbor)
                     ans.append(neighbor)
                     
-        for i in range(n):
-            if len(graph[i]) == 0:
-                ans.append(i)
         ans.sort()
         return ans
                     
