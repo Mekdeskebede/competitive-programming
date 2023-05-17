@@ -17,7 +17,7 @@ class Solution:
                 if neighbor not in visited:
                     visited.add(neighbor)
                     dfs(neighbor)
-        print(node)       
+                    
         ans = []
         visited = set([node])
         dfs(node)
