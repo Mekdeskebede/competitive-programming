@@ -1,23 +1,24 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        dp = {}
+        dp = {(0,0):1}
         
         def inBound(row, col):
             return 0 <= row < m and 0 <= col < n
         
-        def backTrack(row,col):
-            if  row == 0 and col == 0:
-                return 1
-            if (row, col) not in dp:
+        for row in range(m):
+            for col in range(n):
+                if row == 0 and col == 0:
+                    dp[(row, col)] = 1
+                    continue
                 rw = 0
                 cl = 0
-                if inBound(row-1,col):
-                    rw = backTrack(row-1,col)
                 if inBound(row, col-1):
-                    cl = backTrack(row, col-1)
+                    cl = dp[row,col-1]
+                if inBound(row-1, col):
+                    rw = dp[(row-1,col)]
                 dp[(row,col)] = rw + cl
-            return dp[(row,col)] 
+                
+        return dp[(m-1, n-1)]
 
-        return backTrack(m-1,n-1)
 
              
