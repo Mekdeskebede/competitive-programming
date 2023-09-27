@@ -9,7 +9,7 @@ def merge(arr1, arr2):
             if rating[arr1[p1]] >= rating[arr2[p2]]:
                 p2+=1
             else:
-                p1 += 1
+                p1 += 1 
             continue
         if rating[arr1[p1]] < rating[arr2[p2]]:
             res.append(arr1[p1])
