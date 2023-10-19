@@ -10,15 +10,12 @@ class Solution:
                 if row == 0 and col == 0:
                     dp[(row, col)] = 1
                     continue
-                rw = 0
-                cl = 0
+                r = 0
+                c = 0
                 if inBound(row, col-1):
-                    cl = dp[row,col-1]
+                    c = dp[row,col-1]
                 if inBound(row-1, col):
-                    rw = dp[(row-1,col)]
-                dp[(row,col)] = rw + cl
+                    r = dp[(row-1,col)]
+                dp[(row,col)] = r + c
                 
         return dp[(m-1, n-1)]
-
-
-             
