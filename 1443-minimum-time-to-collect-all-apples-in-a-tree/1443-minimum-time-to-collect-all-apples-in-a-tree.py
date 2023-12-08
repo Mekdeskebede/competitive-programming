@@ -3,31 +3,24 @@ class Solution:
         
         adj_list = defaultdict(list)
         visited = set()
-
-        self.ans = 0
         
         for start, end in edges:
             adj_list[start].append(end)
             adj_list[end].append(start)
-
-        visited = set()
+            
         def dfs(node):
-            
             visited.add(node)
-            if len(adj_list[node]) == 1 and node!= 0:
-                if hasApple[node]:
-                    return 2
+            if not adj_list[node]:
                 return 0
-            
-            total = 0
+            temp = 0
             for neighbor in adj_list[node]:
-                if neighbor in visited:
-                    continue                
-                total += dfs(neighbor) 
-
-            if (total or hasApple[node]) and node!= 0:
-                return total + 2
-            return total
+                if neighbor not in visited:
                     
+                    temp += dfs(neighbor)
+                    
+            if( hasApple[node] or temp ) and node != 0:
+                return temp + 2
+            
+            return temp
+        
         return dfs(0)
-        # return self.ans
