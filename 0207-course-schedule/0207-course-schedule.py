@@ -2,26 +2,27 @@ class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         
         adj_list = defaultdict(list)
-        count = [0] * numCourses
-        
-        for start, end in prerequisites:
-            adj_list[start].append(end)
-            count[end] += 1
-            
+        outgoing = defaultdict(list)
+        incoming = defaultdict(int)
+        for a, b in prerequisites:
+            adj_list[a].append(b)
+            outgoing[b].append(a)
+            incoming[a] += 1
+        courses = set(i for i in range((numCourses)))
         queue = deque()
         for i in range(numCourses):
-            if not count[i]:
+            if i not in adj_list:
                 queue.append(i)
                 
         while queue:
             node = queue.popleft()
-            for neighbor in adj_list[node]:
-                count[neighbor] -= 1
-                if count[neighbor] == 0:
-                    queue.append(neighbor)
-                    
-        for cnt in count:
-            if cnt > 0:
-                return False
-        return True
+            courses.remove(node)
+            for child in outgoing[node]:
+                incoming[child] -= 1
+                if incoming[child] == 0:
+                    queue.append(child)
+        if len(courses) == 0:
+            return True
+        return False
+            
             
