@@ -4,13 +4,13 @@ class Solution:
         ans = 0
         for i in bank:
             
-            temp = i.count("1")
+            count = i.count("1")
             
-            if temp != 0:
+            if count != 0:
                 if first == -1:
-                    first = temp  
+                    first = count  
                 else:
-                    ans += (first*temp)
-                    first = temp
+                    ans += (first*count)
+                    first = count
         
         return ans
